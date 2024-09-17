@@ -13,10 +13,45 @@
 
     </header>
 
-    <header class="header">
+    <section id = "sec-carrosel">
+        <div class="carrosel">
+            <div class = "nav nav-left">
+                <button><</button>
+            </div>
+
+            <div class="carrosel-content">
+                <div class="carrosel-content">
+                    <div class ="slide">
+                    </div>
+                    <div class ="slide">
+                    </div>
+                    <div class ="slide">
+                    </div>
+                    <div class ="slide">
+                    </div>
+                    <div class ="slide">
+                    </div>
+            </div>
+            <div class = "nav nav-right">
+                <button>></button>
+
+
+                </div>
+                <div class ="conteudo-produto">
+                    <div class = "box-img-produto">
+                        <img src="churrasco1.jpg"  alt="churrasco">
+                    <!-- <img src="churrasco2.jpg" > alt="churrasco"
+                    <img src="churrasco3.jpg" > alt="churrasco" -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<header class="header">
             <div class="logo">
             </div>
-                    <img src="images.jpg" alt="Buffet - MS">
+                    <img src="images.jpg" alt="logo">
             </div>
             <div class="menu-toggle" id="menu-toggle">
             </div>
@@ -38,4 +73,91 @@
 
     <script src="script.js"></script>
 </body>
+<script>
+// Arrumar essa parte do DOM
+    document.addEventListener("DOMContentLoaded", function(){
+
+        valorUsuario;
+
+        // var btn...
+
+
+
+    var carrosel = document.querySelector(".carrosel");
+    var carrosel = document.querySelector(".carrosel-content");
+    var slides = document.querySelectorAll(".slide");
+    var arrayOfSlides = Array.prototype.slice.call(slides);
+    var carroselDisplaying;
+    var screenSize;
+    setscreenSize();
+    var lengthOfSlides; 
+
+    function addClone(){
+        var lastSlide = carrosel.lestElementChild.cloneNode(true);
+        lastSlide.style.left = (-lengthOfSlides) + 'px';
+        carroselContent.insertBefore(lastSlide, carroselContent.firstChild);
+
+    }
+
+    function removeClone(){
+        var firstSlide = carroselContent.firstChild;
+        firstSlide.parentNode.removeChild(firstSlide);
+    }
+
+    function moveSlideRigth(){
+        var slide = document.querySelector('.slide');
+        var slideArray = Array.prototype.slice.call(slides);
+        var width = 0;
+    
+        slideArray.forEach(funcion(elemento, i){
+            elemento.style.left = width + 'px';
+            width += lengthOfSlides;
+        });
+        addClone()
+    }
+    
+    moveSlideRigth();
+
+    function moveSlideLeft(){
+        var slide = document.querySelector('.slide');
+        var slideArray = Array.prototype.slice.call(slides);
+        slideArray = slideArray.reverse();
+        var maxWidth = (slideArray.lenght -1) * lengthOfSlides;
+
+        slideArray.forEach(function(elemento, i){
+            maxWidth -= lengthOfSlides;
+            elemento.style.left = maxWidth = 'px';
+        })
+    }
+    window.addEventListener('resize',setscreenSize);
+
+    function setScreenSize(){
+        if (window.innerWidth >=500){
+            carroselDisplaying = 3;
+        }
+        else if (window.innerWidt >=300){
+        }
+        else{
+            carroselDisplaying = 1;
+        }
+        getElementSize();
+    }
+    function getElementSize(){
+        var slides = document.querySelector('.slide');
+        var slideArray = Array.prototype.slice.call(slides);
+        lengthOfSlides = (carrosel.offsetWidth / carroselDisplaying);
+        var initialWidth =-lengthOfSlides;
+
+        slideArray.forEach(function(elemento){
+            elemento.style.width = lengthOfSlides = 'px';
+            elemento.style.left = lengthOfSlides + 'px';
+            initialWidth += lengthOfSlides;
+        })
+    }
+
+    var rightNav = document.querySelector('.nav-right');
+    rightNav.addEventListener('click', moveLeft);
+    
+
+</script>
 </html>
