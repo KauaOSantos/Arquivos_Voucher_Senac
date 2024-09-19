@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Reutaurante CG</title>
+    <link rel="stylesheet" href="./Style/Style_Buffet.css">
+    <title>Costelinha Grill - Buffet</title>
 </head>
 <body>
     
     <header id="header-site">
         <div id="img-header">
-            <img src="./img/logo-header.png" alt="Hamburgueria-CG">
+            <img src="./logo_costelinha.jpg" alt="Hamburgueria-CG">
         </div>
 
         <nav id="nav-header">
@@ -29,7 +29,7 @@
                     <a href="#">Sobre</a>
                 </li>
                 <li class="item-nav-header">
-                    <a href="#">Cardápio</a>
+                    <a href="#">Eventos</a>
                 </li>
                 <li class="item-nav-header">
                     <a href="#">Pedido</a>
@@ -53,11 +53,11 @@
                 <div class="slide">
                     <div class="conteudo-produto">
                         <div class="box-img-produto">
-                            <img src="./img/hamburguer-mexicano.jpg" alt="Hamburger Mexicano">
+                            <img src="./churrasco1.jpg" alt="Bife na chapa">
                         </div>
                         <div class="info-produto">
-                            <h2>Hamburger Mexicano</h2>
-                            <span>R$ 34,00</span>
+                            <h2>Bife na Chapa</h2>
+                            <span>R$ 00,00</span>
                         </div>
                         <div class="box-cta">
                             <button class="cta-produto">
@@ -69,11 +69,11 @@
                 <div class="slide">
                     <div class="conteudo-produto">
                         <div class="box-img-produto">
-                            <img src="./img/hamburguer-mexicano.jpg" alt="Hamburger Mexicano">
+                            <img src="./churrasco2.jpg" alt="Patinho">
                         </div>
                         <div class="info-produto">
-                            <h2>Hamburger Mexicano</h2>
-                            <span>R$ 34,00</span>
+                            <h2>Patinho</h2>
+                            <span>R$ 00,00</span>
                         </div>
                         <div class="box-cta">
                             <button class="cta-produto">
@@ -85,11 +85,11 @@
                 <div class="slide">
                     <div class="conteudo-produto">
                         <div class="box-img-produto">
-                            <img src="./img/hamburguer-mexicano.jpg" alt="Hamburger Mexicano">
+                            <img src="./churrasco3.jpg" alt="Picanha">
                         </div>
                         <div class="info-produto">
-                            <h2>Hamburger Mexicano</h2>
-                            <span>R$ 34,00</span>
+                            <h2>Picanha</h2>
+                            <span>R$ 00,00</span>
                         </div>
                         <div class="box-cta">
                             <button class="cta-produto">
@@ -101,11 +101,11 @@
                 <div class="slide">
                     <div class="conteudo-produto">
                         <div class="box-img-produto">
-                            <img src="./img/hamburguer-mexicano.jpg" alt="Hamburger Mexicano">
+                            <img src="./costela_bovina.jpg" alt="Costela Bovina">
                         </div>
                         <div class="info-produto">
-                            <h2>Hamburger Mexicano</h2>
-                            <span>R$ 34,00</span>
+                            <h2>Costela Bovina</h2>
+                            <span>R$ 00,00</span>
                         </div>
                         <div class="box-cta">
                             <button class="cta-produto">
@@ -117,11 +117,11 @@
                 <div class="slide">
                     <div class="conteudo-produto">
                         <div class="box-img-produto">
-                            <img src="./img/hamburguer-mexicano.jpg" alt="Hamburger Mexicano">
+                            <img src="./costelinhaSuina.jpg" alt="Costela Suina">
                         </div>
                         <div class="info-produto">
-                            <h2>Hamburger Mexicano</h2>
-                            <span>R$ 34,00</span>
+                            <h2>Costela Suína</h2>
+                            <span>R$ 00,00</span>
                         </div>
                         <div class="box-cta">
                             <button class="cta-produto">
@@ -138,8 +138,8 @@
         </div>
     </section>
 
-    <!--
-    <section id="sec-formulario">
+    <!-- Formulário -->
+    <!-- <section id="sec-formulario">
         <form id="formulario">
             <div>
                 <label for="usuario">Usuario:</label>
@@ -154,8 +154,10 @@
 
             <input type="submit" value="Entrar">
         </form>
-    </section>
-    -->
+    </section> -->
+   
+
+
 </body>
 <script>
     document.addEventListener('DOMContentLoaded', function(){
@@ -218,6 +220,7 @@
             elemento.style.left = maxWidth + 'px';
         })
     }
+    moveSlideLeft();
 
     window.addEventListener('resize', setScreenSize);
 
@@ -248,7 +251,10 @@
     var rightNav = document.querySelector('.nav-right');
     rightNav.addEventListener('click', moveLeft);
 
-    var moving = true;
+    var leftNav = document.querySelector('.nav-left');
+    leftNav.addEventListener('click', moveLeft);
+
+
 
     function moveRight(){
         if(moving){
@@ -315,35 +321,15 @@
     }
 
     function getInitialPos(){
-        var slides = document.querySelectorAll('.slides');
-        var slidesArray = Array.prototype.slice.call(slides);
-        initialPos = [];
+    var slides = document.querySelectorAll('.slide');
+    var slidesArray = Array.prototype.slice.call(slides);
+    initialPos = [];
 
-        slidesArray.forEach(function(elemento){
-            var left = Math.floor(parseInt(elemento.style.slice(0, -2)));
-        })
-    }
+    slidesArray.forEach(function(elemento, i){
+        var left = Math.floor(parseInt(elemento.style.left.slice(0, -2)));
+        initialPos.push(left);
+    })
+}
 
-    function slightMoveSlides(newX){
-        var slides = document.querySelectorAll('.slides');
-        var slidesArray = Array.prototype.slice.call(slides);
-
-        slidesArray.forEach(function(elemento, i){
-            var oldLeft = initialPos[i];
-            elemento.style.left = (oldLeft + newX) + 'px';
-        });
-    }
-
-    function moveBasedOnMouse(elemento){
-        var finalX = elemento.clientX;
-        if(initialX - finalX > 0){
-            moveRight();
-        }else if(initialX - finalX < 0 ){
-            moveLeft();
-        }
-
-        document.removeEventListener('mouseup', moveBasedOnMouse);
-        carouselContent.removeEventListener('mousemove', slightMove);
-    }
 </script>
 </html>
