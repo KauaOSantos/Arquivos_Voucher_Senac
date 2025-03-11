@@ -1,30 +1,87 @@
-body{
-    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-*{
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-bottom: 35px;
-}
-/* 
-#caixa{
-    height: 100px;
-    width: 100px;
-    background:  red;
-    padding: 500px 10px 20px 30px;  defini o tamanho da tela
-    border: 40px solid blue;
-    margin: 30px
-} */
 
-img{
-    height: 100px;
-    width: 100px;
+a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
 }
-div {
-  display: flex;  
-  flex-wrap: wrap;
+
+a:hover {
+  opacity: 0.7;
 }
-div {
-  display: flex;  
-  flex-wrap: wrap;
+
+.logo {
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+  background: #23232e;
+  height: 8vh;
+}
+
+main {
+  background: url("./imagens/imgCostelaBovina.jpg") no-repeat center center;
+  background-size: cover;
+  height: 92vh;
+}
+
+.listaMenu{
+  list-style: none;
+  display: flex;
+}
+
+.listaMenu li {
+  letter-spacing: 3px;
+  margin-left: 32px;
+}
+
+.menuMobile {
+  cursor: pointer;
+  display: none;
+}
+
+.menuMobile div{
+  width: 32px;
+  height: 2px;
+  background: #fff;
+  margin: 8px;
+}
+
+@media (max-width: 999px) {
+  body {
+    overflow-x: hidden
+  };
+  .listaMenu {
+    position: absolute;
+    top: 8vh;
+    right: 0;
+    width: 50vw;
+    height: 92vh;
+    background: #23232e;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transform: translateX(100%);
+  }
+  .listaMenu li {
+    margin-left: 0;
+    opacity: 0;
+  }
+  .menuMobile {
+    display: block;
+  }
+}
+
+.listaMenu.active {
+  transform: translateX(0);
 }
